@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Cinema World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1f1f1f;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .movie {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #2a2a2a;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            width: 250px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .movie:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        }
+        .movie h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: #e0e0e0;
+        }
+        .watch-button, .edit-button {
+            padding: 10px 15px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+        .watch-button:hover, .edit-button:hover {
+            background-color: #e91e63;
+            transform: scale(1.05);
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #1f1f1f;
+            color: #b0b0b0;
+        }
+        .edit-input {
+            display: none;
+            margin-top: 10px;
+            padding: 5px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to the Cinema World</h1>
+    </header>
+
+    <div class="container">
+        <div class="movie">
+            <h2 class="movie-title">Movie Title 1</h2>
+            <input type="text" class="edit-input" placeholder="Edit title" />
+            <button class="edit-button" onclick="editTitle(this)">Edit</button>
+            <button class="watch-button" onclick="watchMovie()">Watch</button>
+        </div>
+
+        <div class="movie">
+            <h2 class="movie-title">Movie Title 2</h2>
+            <input type="text" class="edit-input" placeholder="Edit title" />
+            <button class="edit-button" onclick="editTitle(this)">Edit</button>
+            <button class="watch-button" onclick="watchMovie()">Watch</button>
+        </div>
+
+        <div class="movie">
+            <h2 class="movie-title">Movie Title 3</h2>
+            <input type="text" class="edit-input" placeholder="Edit title" />
+            <button class="edit-button" onclick="editTitle(this)">Edit</button>
+            <button class="watch-button" onclick="watchMovie()">Watch</button>
+        </div>
+
+        <div class="movie">
+            <h2 class="movie-title">Movie Title 4</h2>
+            <input type="text" class="edit-input" placeholder="Edit title" />
+            <button class="edit-button" onclick="editTitle(this)">Edit</button>
+            <button class="watch-button" onclick="watchMovie()">Watch</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Welcome to the Cinema World. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function watchMovie() {
+            window.open("https://drive.google.com/file/d/1yyKCNLX_wq5AHxGSLW5adz77sSxBW6mG/view?usp=drivesdk", "_blank");
+        }
+
+        function editTitle(button) {
+            const movieDiv = button.parentElement;
+            const titleElement = movieDiv.querySelector('.movie-title');
+            const inputElement = movieDiv.querySelector('.edit-input');
+
+            if (inputElement.style.display === "none" || inputElement.style.display === "") {
+                inputElement.style.display = "block";
+                inputElement.value = titleElement.innerText; // Set input value to current title
+                button.innerText = "Save"; // Change button text to Save
+            } else {
+                titleElement.innerText = inputElement.value; // Update title with input value
+                inputElement.style.display = "none"; // Hide input field
+                button.innerText = "Edit"; // Change button text back to Edit
+            }
+        }
+    </script>
+
+</body>
+</html>
